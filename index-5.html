@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Para Lorenita 💛</title>
+<meta name="theme-color" content="#f5c518">
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Georgia,serif}
+body{background:linear-gradient(135deg,#fff9d8,#ffd83d,#fff0a3);color:#fff;overflow-x:hidden}
+.wrap{min-height:100vh;display:grid;place-items:center;padding:24px 12px}
+.card{width:min(94vw,520px);padding:10px;border-radius:30px;background:rgba(25,18,5,.82);box-shadow:0 20px 70px #6d500088;position:relative;overflow:hidden}
+.cover{position:relative;border-radius:23px;overflow:hidden}
+.cover img{width:100%;display:block;filter:saturate(1.04)}
+.overlay{position:absolute;inset:0;background:linear-gradient(transparent 48%,rgba(0,0,0,.78))}
+.intro{position:absolute;inset:auto 18px 20px;text-align:center}
+.intro h1{margin:0;color:#ffd72f;font-size:clamp(30px,8vw,46px);text-shadow:0 2px 10px #000}
+.intro p{margin:5px 0;font-size:16px}
+button{border:0;border-radius:999px;padding:14px 23px;margin-top:14px;font-size:16px;font-weight:bold;background:#ffd32e;color:#241b00;box-shadow:0 7px 20px #0007;cursor:pointer}
+.content{text-align:center;padding:10px 15px 18px;display:none;animation:up .8s ease}
+.content.show{display:block}
+.content h2{color:#ffd72f;font-size:28px;margin:12px 0}
+.content p{font-size:19px;line-height:1.6;margin:10px 0}
+.name{font-size:31px;color:#ffd72f;font-style:italic;margin-top:16px}
+.heart{position:fixed;bottom:-40px;font-size:25px;pointer-events:none;animation:float 5s linear forwards}
+.flower{position:fixed;top:-50px;font-size:25px;pointer-events:none;animation:fall 7s linear infinite}
+@keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+@keyframes float{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:.15}}
+@media(max-width:400px){.content p{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="flower" style="left:8%;animation-delay:0s">🌻</div>
+<div class="flower" style="left:35%;animation-delay:2s">🌼</div>
+<div class="flower" style="left:70%;animation-delay:1s">🌻</div>
+<div class="flower" style="left:90%;animation-delay:4s">🌼</div>
+
+<div class="wrap">
+<main class="card">
+  <div class="cover">
+    <img src="flores_lorenita.png" alt="Flores amarillas para Lorenita">
+    <div class="overlay"></div>
+    <div class="intro">
+      <h1>Lorenita 💛</h1>
+      <p>Tengo un pequeño regalo para ti…</p>
+      <button id="open">🌻 Abrir mi regalo 🌻</button>
+    </div>
+  </div>
+
+  <section class="content" id="letter">
+    <h2>Mi amor… 🌻</h2>
+    <p>Estas son mis <strong>flores amarillas</strong> para ti.</p>
+    <p>Serán eternas, porque no se marchitarán…</p>
+    <p>Así quiero que sea lo que siento por ti: algo que permanezca, que siga floreciendo y que nunca pierda su color. 💛</p>
+    <p>Gracias por existir y por hacer más bonito mi mundo.</p>
+    <div class="name">Lorenita Encinas ❤️</div>
+    <button id="again">💛 Llenar la pantalla de amor</button>
+  </section>
+</main>
+</div>
+
+<script>
+const open=document.getElementById('open'), letter=document.getElementById('letter');
+function heart(){
+ const h=document.createElement('div'); h.className='heart';
+ h.textContent=['💛','❤️','🌻','✨'][Math.floor(Math.random()*4)];
+ h.style.left=Math.random()*100+'vw';
+ h.style.animationDuration=(3+Math.random()*3)+'s';
+ document.body.appendChild(h); setTimeout(()=>h.remove(),6500);
+}
+function burst(){for(let i=0;i<28;i++)setTimeout(heart,i*80)}
+open.onclick=()=>{letter.classList.add('show'); open.textContent='💛 Ya abriste mi regalo'; burst();};
+document.getElementById('again').onclick=burst;
+</script>
+</body>
+</html>
